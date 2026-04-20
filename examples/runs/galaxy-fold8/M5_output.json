@@ -1,0 +1,56 @@
+{
+  "stage": "M5",
+  "assumptions": [
+    "광고 노출 외 요인(계절성/오프라인 프로모션)의 영향이 일부 존재",
+    "어트리뷰션은 라스트클릭 편향이 있을 수 있음"
+  ],
+  "inputs_used": {
+    "from_stage": "M4.handoff_payload",
+    "campaign_data_period": "2026-09"
+  },
+  "artifacts": {
+    "kpi_dashboard": {
+      "impressions": 9800000,
+      "clicks": 412000,
+      "ctr": 0.042,
+      "landing_sessions": 266000,
+      "preorder_leads": 21400,
+      "lead_conversion_rate": 0.0805,
+      "purchase_assists": 5400
+    },
+    "funnel_diagnosis": {
+      "drop_point": "클릭 -> 랜딩 세션 전환",
+      "issue_hypothesis": "모바일 랜딩 첫 화면의 정보밀도 과다",
+      "recommended_fix": "상단 가치요약 + CTA 단순화"
+    },
+    "incrementality_read": {
+      "summary": "검색 고의도 구간의 증분 기여가 상대적으로 큼",
+      "evidence_grade": "중",
+      "note": "실험군/대조군 설계 보강 필요"
+    },
+    "optimization_recommendations": [
+      "네이버 검색 예산 +8%, 카카오 비즈보드 -5% 재배분 테스트",
+      "유튜브 30초 소재의 초반 5초 메시지 단순화",
+      "랜딩페이지 FAQ Answer-first 구조 고정"
+    ]
+  },
+  "quality_notes": [
+    "인과 단정 대신 증거등급 표기",
+    "불확실성 항목 명시"
+  ],
+  "next_stage_ready": true,
+  "handoff_payload": {
+    "insight_pack": {
+      "primary_driver": "고의도 검색 유입",
+      "main_leakage": "클릭 후 랜딩 초기 이탈"
+    },
+    "budget_shift_scenarios": [
+      "Scenario A: Search 중심 확대",
+      "Scenario B: Video 효율 재학습 후 확대"
+    ],
+    "learning_agenda": [
+      "증분 측정 실험(geo split)",
+      "CTA 메시지 유형별 전환 차이 검증"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "campaign_name": "갤럭시 폴드8",
+  "brand_name": "삼성전자",
+  "brand_category": "폴더블 스마트폰",
+  "competitor_set": [
+    {
+      "name": "샤오미",
+      "positioning": "가격 경쟁력과 고사양 조합",
+      "message_pattern": "가성비/신기술 도입 속도 강조",
+      "risk_to_us": "가격 비교 기반 이탈"
+    }
+  ],
+  "product_specs": {
+    "note": "아래 내용은 예시용 더미 입력이며 실제 스펙 검증 후 교체 필요",
+    "form_factor": "폴더블",
+    "value_hypothesis": [
+      "멀티태스킹 효율",
+      "대화면 생산성",
+      "프리미엄 사용 경험"
+    ]
+  },
+  "topic_clusters": [
+    "일상 생산성 강화",
+    "프리미엄 디자인",
+    "AI 기반 사용 편의"
+  ],
+  "target_region": "대한민국(KR)",
+  "campaign_data": {
+    "period": "2026-09",
+    "channels": ["Naver Search", "Google Search", "Kakao Bizboard", "YouTube"],
+    "kpi": {
+      "impressions": 9800000,
+      "clicks": 412000,
+      "landing_sessions": 266000,
+      "preorder_leads": 21400,
+      "purchase_assists": 5400
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "stage": "M6",
+  "assumptions": [
+    "Q4 시장 경쟁 심화에 따라 효율 변동폭 확대 가능"
+  ],
+  "inputs_used": {
+    "from_stages": ["M2", "M3", "M4", "M5"],
+    "campaign_name": "갤럭시 폴드8"
+  },
+  "artifacts": {
+    "executive_one_pager": {
+      "background": "갤럭시 폴드8 캠페인은 프리미엄 사용가치 중심 전략으로 설계됨",
+      "insight": "고의도 검색 채널이 리드 견인, 랜딩 초기 이탈이 핵심 개선지점",
+      "impact": "전환 퍼널 최적화 시 리드 효율 추가 개선 여지 확인",
+      "uncertainty": "증분효과는 실험설계 보강 전까지 중간 신뢰",
+      "investment_view": "검색 중심의 선택적 예산 확대 + 랜딩 개선 병행이 합리적"
+    },
+    "decision_asks": [
+      "향후 4주간 검색 채널 예산 +8% 테스트 승인",
+      "랜딩페이지 개편(상단 정보구조 단순화) 우선 배정",
+      "증분 측정용 지역 분할 실험 승인"
+    ],
+    "quarterly_action_plan": [
+      "W1~W2: 크리에이티브 리프레시 + CTA 테스트",
+      "W3~W4: 랜딩 개선 버전 론칭",
+      "W5~W8: 증분 실험 및 예산 재배분 확정"
+    ]
+  },
+  "quality_notes": [
+    "ROI/불확실성 균형 기술",
+    "결정 요청 3개 이내 준수"
+  ],
+  "next_stage_ready": true,
+  "handoff_payload": {
+    "board_ready_packet": {
+      "title": "갤럭시 폴드8 캠페인 운영 제안",
+      "format": "1-page + appendix"
+    },
+    "metrics_dictionary": {
+      "CPL": "리드당 비용",
+      "CVR": "전환율",
+      "Incrementality": "증분 기여"
+    },
+    "followup_tracking": [
+      "주간 KPI 리뷰",
+      "월간 증분 리포트"
+    ]
+  }
+}

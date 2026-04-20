@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marketing Orchestration Handoff",
+  "type": "object",
+  "required": [
+    "stage",
+    "assumptions",
+    "inputs_used",
+    "artifacts",
+    "quality_notes",
+    "next_stage_ready",
+    "handoff_payload"
+  ],
+  "properties": {
+    "stage": {
+      "type": "string",
+      "enum": ["M2", "M3", "M4", "M5", "M6", "SYNTH"]
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "inputs_used": {
+      "type": "object"
+    },
+    "artifacts": {
+      "type": "object"
+    },
+    "quality_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_stage_ready": {
+      "type": "boolean"
+    },
+    "handoff_payload": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

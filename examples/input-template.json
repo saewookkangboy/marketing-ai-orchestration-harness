@@ -1,0 +1,33 @@
+{
+  "campaign_name": "2026 Q4 Enterprise Pipeline Growth",
+  "brand_name": "Samsung DX",
+  "brand_category": "B2B Digital Transformation",
+  "competitor_set": [
+    {
+      "name": "Competitor A",
+      "positioning": "가격 중심",
+      "message_pattern": "비용 절감 강조"
+    },
+    {
+      "name": "Competitor B",
+      "positioning": "기술 중심",
+      "message_pattern": "성능 수치 강조"
+    }
+  ],
+  "product_specs": "공식 스펙 링크와 인증 자료 요약",
+  "topic_clusters": [
+    "운영 최적화",
+    "보안/신뢰성",
+    "총소유비용 절감"
+  ],
+  "target_region": "KR",
+  "campaign_data": {
+    "period": "2026-10",
+    "channels": ["Naver", "Google", "Kakao"],
+    "kpis": {
+      "impressions": 1200000,
+      "clicks": 34000,
+      "leads": 890
+    }
+  }
+}
