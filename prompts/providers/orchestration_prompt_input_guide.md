@@ -16,6 +16,7 @@ JSON 없이 자연어 구조로 입력할 수 있습니다.
 토픽 클러스터: {{topic_clusters}}
 타겟 지역/언어: {{target_region}}
 캠페인 데이터: {{campaign_data}}
+콘텐츠 출력 조건: {{content_output_conditions}}
 ```
 
 ## 2) 공통 원프롬프트 (모든 모델 공용)
@@ -42,6 +43,7 @@ JSON 없이 자연어 구조로 입력할 수 있습니다.
 - 토픽 클러스터: {{topic_clusters}}
 - 타겟 지역/언어: {{target_region}}
 - 캠페인 데이터: {{campaign_data}}
+- 콘텐츠 출력 조건: {{content_output_conditions}}
 
 [실행 절차]
 - INPUT 게이트 검사 후 통과하면 M2 -> M3 -> M4 -> M5 -> M6 순으로 실행
@@ -88,5 +90,6 @@ JSON 없이 자연어 구조로 입력할 수 있습니다.
 
 - `competitor_set`, `topic_clusters`는 쉼표 구분으로 최소 1개 이상 입력 (예: `LG B2B, Siemens`)
 - `campaign_data`가 없으면 `없음`으로 명시
+- `content_output_conditions`가 없으면 M3에서 기본 채널 조건(블로그 AEO/GEO, 인스타 이미지+메시지+CTA, 링크드인 뉴스피드 최적화)을 자동 적용
 - 지역/언어가 중요하면 `target_region`에 국가 + 언어를 함께 기입 (예: `KR-ko`)
 - 결과가 장황하면 프롬프트 마지막에 `설명은 5줄 이내`를 추가

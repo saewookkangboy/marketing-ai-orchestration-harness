@@ -35,5 +35,30 @@
       "preorder_leads": 21400,
       "purchase_assists": 5400
     }
+  },
+  "content_output_conditions": {
+    "blog": {
+      "optimize_for": ["AEO", "GEO"],
+      "requirements": [
+        "검색/생성형 엔진이 요약하기 쉬운 문서 구조 유지",
+        "핵심 답변 우선 작성 후 FAQ를 별도 섹션으로 구성"
+      ]
+    },
+    "instagram": {
+      "format_options": ["single_image", "carousel"],
+      "image_generation_model": "Gemini Nano Banana Pro2",
+      "requirements": [
+        "모든 이미지 생성 프롬프트를 제공",
+        "캡션 메시지와 CTA를 함께 제공"
+      ]
+    },
+    "linkedin": {
+      "format": "linkedin_newsfeed_optimized",
+      "requirements": [
+        "첫 2문장 훅 작성",
+        "짧은 문단/불릿 중심 구성",
+        "CTA 1개 이상 포함"
+      ]
+    }
   }
 }

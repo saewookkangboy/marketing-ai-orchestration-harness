@@ -39,6 +39,7 @@
 4. 단계 결과를 Markdown 보고서로 변환(선택)
    - `python3 scripts/export_markdown_report.py --input examples/runs/galaxy-fold8/M2_output.json`
    - 기본 출력: `examples/runs/galaxy-fold8/M2_output.md`
+   - M3 콘텐츠 출력 조건 적용 예시: `examples/runs/galaxy-fold8/M3_output.json`의 `artifacts.conditions_applied`
 
 ## Cursor Agent / Claude Cowork 로컬 문서 연동 프로세스
 
@@ -53,6 +54,7 @@
      - `dist/local_intake_input_suggested.json` (입력 변수 후보값)
 2. **필수 입력 변수 매핑**
    - `dist/local_intake_input_suggested.json`을 검토 후 `examples/input-template.json`의 8개 필수 슬롯 확정
+   - `content_output_conditions`가 있으면 M3 콘텐츠 생성 제약으로 함께 반영
 3. **필수 입력 변수 게이트 확인**
    - 필수 스칼라: `campaign_name`, `brand_name`, `brand_category`, `product_specs`, `target_region`
    - 필수 컬렉션: `competitor_set`(1개 이상), `topic_clusters`(1개 이상)
@@ -87,6 +89,7 @@
 - `topic_clusters`: 콘텐츠 주제 클러스터
 - `target_region`: 국가/언어/규제 민감도
 - `campaign_data`: 성과 데이터(없으면 M5 시뮬레이션 모드)
+- `content_output_conditions`: 콘텐츠 출력 조건(채널별 포맷, 최적화 지침, CTA/이미지 생성 제약)
 
 ## 권장 운영 방식
 

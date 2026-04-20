@@ -34,6 +34,33 @@
       "브랜드 톤: 명확/안심/일관. 갤럭시 폴드8의 실사용 가치를 90자 이내로 설명하는 광고 문구 10개 생성",
       "샤오미와 직접 비교하지 않고, 사용맥락 기반 차별가치를 CTA 포함 5개 생성"
     ],
+    "conditions_applied": [
+      {
+        "channel": "blog",
+        "applied_rules": [
+          "AEO/GEO 최적화 문서 구조 적용",
+          "핵심 답변 우선 + FAQ 섹션 분리"
+        ],
+        "status": "applied"
+      },
+      {
+        "channel": "instagram",
+        "applied_rules": [
+          "single_image 또는 carousel 포맷 중 1개 선택",
+          "Gemini Nano Banana Pro2 기반 이미지 생성 프롬프트 포함",
+          "캡션 메시지 + CTA 포함"
+        ],
+        "status": "applied"
+      },
+      {
+        "channel": "linkedin",
+        "applied_rules": [
+          "링크드인 뉴스피드 최적화 구성",
+          "초반 훅 + 짧은 문단/불릿 + CTA 포함"
+        ],
+        "status": "applied"
+      }
+    ],
     "video_production_proposal": {
       "format": ["15s", "30s", "60s"],
       "concept": "접고 펼치는 순간마다 달라지는 하루의 효율",

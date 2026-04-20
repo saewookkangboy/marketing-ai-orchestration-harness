@@ -29,5 +29,31 @@
       "clicks": 34000,
       "leads": 890
     }
+  },
+  "content_output_conditions": {
+    "blog": {
+      "optimize_for": ["AEO", "GEO"],
+      "requirements": [
+        "생성형 엔진이 요약하기 쉬운 구조(제목/요약/섹션/핵심 포인트)",
+        "핵심 질문에 대한 명시적 답변과 FAQ 포함"
+      ]
+    },
+    "instagram": {
+      "format_options": ["single_image", "carousel"],
+      "image_generation_model": "Gemini Nano Banana Pro2",
+      "requirements": [
+        "이미지 생성 프롬프트 포함",
+        "캡션 메시지 포함",
+        "명확한 CTA 포함"
+      ]
+    },
+    "linkedin": {
+      "format": "linkedin_newsfeed_optimized",
+      "requirements": [
+        "초반 훅 1-2문장",
+        "짧은 문단/불릿 기반 본문",
+        "명확한 CTA 포함"
+      ]
+    }
   }
 }

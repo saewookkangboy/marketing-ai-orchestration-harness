@@ -1,0 +1,74 @@
+# M3 output report
+
+- **stage**: M3
+- **assumptions**:
+  - M2 브랜드 보이스를 모든 카피 모듈에 공통 적용
+  - 타깃은 신규 구매 + 프리미엄 업그레이드 수요를 포함
+- **inputs_used**:
+  - **from_stage**: M2.handoff_payload
+  - **campaign_name**: 갤럭시 폴드8
+  - **target_region**: KR
+- **artifacts**:
+  - **copy_modules**:
+    -
+      - **id**: NAVER_A1
+      - **channel**: Naver Search
+      - **headline**: 갤럭시 폴드8, 일상을 더 명확하게
+      - **sub**: 접으면 휴대, 펼치면 생산성
+      - **cta**: 사전예약 혜택 확인
+    -
+      - **id**: YT_V1
+      - **channel**: YouTube
+      - **headline**: 멀티태스킹이 쉬워지는 순간
+      - **sub**: 대화면으로 업무와 일상을 자연스럽게 연결
+      - **cta**: 실사용 영상 보기
+  - **image_prompts**:
+    - 프리미엄 모바일 라이프스타일, 폴더블 기기 펼침 상태, 자연광, 미니멀 배경, 브랜드 컬러 포인트, 과장된 효과 금지
+    - 오피스 환경에서 멀티태스킹 장면, 화면 분할 UI 강조, 명확한 텍스트 공간 확보
+  - **message_prompts**:
+    - 브랜드 톤: 명확/안심/일관. 갤럭시 폴드8의 실사용 가치를 90자 이내로 설명하는 광고 문구 10개 생성
+    - 샤오미와 직접 비교하지 않고, 사용맥락 기반 차별가치를 CTA 포함 5개 생성
+  - **conditions_applied**:
+    -
+      - **channel**: blog
+      - **applied_rules**:
+        - AEO/GEO 최적화 문서 구조 적용
+        - 핵심 답변 우선 + FAQ 섹션 분리
+      - **status**: applied
+    -
+      - **channel**: instagram
+      - **applied_rules**:
+        - single_image 또는 carousel 포맷 중 1개 선택
+        - Gemini Nano Banana Pro2 기반 이미지 생성 프롬프트 포함
+        - 캡션 메시지 + CTA 포함
+      - **status**: applied
+    -
+      - **channel**: linkedin
+      - **applied_rules**:
+        - 링크드인 뉴스피드 최적화 구성
+        - 초반 훅 + 짧은 문단/불릿 + CTA 포함
+      - **status**: applied
+  - **video_production_proposal**:
+    - **format**:
+      - 15s
+      - 30s
+      - 60s
+    - **concept**: 접고 펼치는 순간마다 달라지는 하루의 효율
+    - **service_model**: 하이브리드(핵심 크리에이티브 외주 + 퍼포먼스 컷 인하우스)
+- **quality_notes**:
+  - 금지어 미사용
+  - 브랜드 보이스 키워드 유지
+- **next_stage_ready**: true
+- **handoff_payload**:
+  - **creative_library**:
+    - **search_assets**: 12
+    - **social_assets**: 18
+    - **video_assets**: 6
+  - **channel_assets_map**:
+    - **Naver Search**:
+      - NAVER_A1
+    - **YouTube**:
+      - YT_V1
+  - **test_candidates**:
+    - 헤드라인 가치 표현형 vs 기능 표현형
+    - CTA 혜택형 vs 체험형
