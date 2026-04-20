@@ -26,6 +26,7 @@
 - `prompts/stages`: M2~M6 단계별 전문 에이전트 프롬프트
 - `prompts/specialized`: 이미지/메시지/영상 제안 등 확장 모듈
 - `prompts/providers`: 모델별 적용 가이드(ChatGPT/Claude/Gemini)
+- `prompts/providers/orchestration_prompt_input_guide.md`: 입력 변수만 채워 실행하는 원프롬프트 가이드
 - `schemas`: 단계 간 핸드오프 JSON 스키마
 - `examples`: 입력 템플릿 및 실행 예시
 - `scripts`: 변수 주입으로 최종 프롬프트를 렌더링하는 하네스
@@ -38,6 +39,7 @@
    - `python3 scripts/render_prompt.py --input examples/input-template.json --stage orchestration`
 3. 출력 프롬프트 사용
    - 생성된 `dist/` 파일을 ChatGPT/Claude/Gemini에 붙여 실행
+   - 또는 `prompts/providers/orchestration_prompt_input_guide.md`의 공통 원프롬프트에 입력 변수 JSON만 채워 즉시 실행
 4. 단계 결과를 Markdown 보고서로 변환(선택)
    - `python3 scripts/export_markdown_report.py --input examples/runs/galaxy-fold8/M2_output.json`
    - 기본 출력: `examples/runs/galaxy-fold8/M2_output.md`
