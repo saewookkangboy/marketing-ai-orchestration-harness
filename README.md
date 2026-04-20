@@ -1,8 +1,7 @@
 # Marketing AI Orchestration Harness
 
 전략(M2) -> 실행(M3) -> 최적화(M4) -> 분석(M5) -> 보고(M6) 파이프라인을 단절 없이 운영하기 위한 프롬프트 레포입니다.
-<img width="2752" height="1536" alt="git_blueprint" src="https://github.com/user-attachments/assets/da0094fb-76e5-47b9-9a75-0db9466b16b5" />
-
+<img width="2752" height="1536" alt="git_blueprint" src="https://github.com/user-attachments/assets/051ebf64-8880-49fa-bbcc-5eb7b216caa3" />
 
 ## Repository About & Description (KR/EN)
 
