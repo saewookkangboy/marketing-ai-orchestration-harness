@@ -20,6 +20,25 @@
 3. 민감정보/내부 기밀/개인정보 노출 금지
 4. 입력이 부족하면 질문은 최대 3개만 제시
 
+## 로컬 문서 기반 인테이크 프로세스 (Cursor Agent / Claude Cowork 공용)
+다음 파일 유형을 입력 근거로 사용할 수 있다: `.md`, `.markdown`, `.txt`, `.doc`, `.docx`, `.pdf`
+
+1. **SOURCE_SCAN**
+   - 제공된 로컬 파일 목록을 확인하고 파일별 핵심 근거를 3줄 이내로 요약한다.
+   - 근거가 불명확한 파일은 제외하고 제외 사유를 남긴다.
+2. **EVIDENCE_TO_VARIABLES**
+   - 근거를 `필수 입력 변수` 8개 슬롯에 매핑한다.
+   - 변수별로 `직접 인용 가능 근거`가 있는지 표시한다.
+3. **REQUIRED_GATE**
+   - 아래 조건을 만족하면 `gate_pass = true`, 아니면 `false`:
+     - `campaign_name`, `brand_name`, `brand_category`, `product_specs`, `target_region`는 비어 있지 않아야 함
+     - `competitor_set`, `topic_clusters`는 최소 1개 항목 이상
+     - `campaign_data`가 없으면 M5를 `simulation_mode`로 강제
+   - `gate_pass = false`이면 누락/불충분 항목 목록 + 보완 질문(최대 3개)만 출력하고 본 단계 실행을 중단한다.
+4. **EXECUTION_READY**
+   - `gate_pass = true`이면 `INTAKE -> M2 -> M3 -> M4 -> M5 -> M6` 순으로 실행한다.
+   - 모든 단계에서 어떤 로컬 파일 근거를 사용했는지 `inputs_used.sources`에 파일명 배열로 남긴다.
+
 ## 상태머신
 `INTAKE -> M2 -> M3 -> M4 -> M5 -> M6 -> SYNTH -> QA`
 
@@ -57,6 +76,18 @@
 ```json
 {
   "stage": "M2|M3|M4|M5|M6|SYNTH",
+  "intake_status": {
+    "gate_pass": true,
+    "missing_required": [],
+    "simulation_mode": false
+  },
+  "source_documents": [
+    {
+      "path": "local/path/to/file.pdf",
+      "file_type": "pdf",
+      "used_in_variables": ["product_specs", "competitor_set"]
+    }
+  ],
   "campaign_context": {
     "campaign_name": "{{campaign_name}}",
     "brand_name": "{{brand_name}}",

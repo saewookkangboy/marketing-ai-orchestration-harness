@@ -2,6 +2,18 @@
 
 전략(M2) -> 실행(M3) -> 최적화(M4) -> 분석(M5) -> 보고(M6) 파이프라인을 단절 없이 운영하기 위한 프롬프트 레포입니다.
 
+## Repository About & Description (KR/EN)
+
+### Git Description (짧은 문구)
+
+- KR: `M2~M6 마케팅 AI 워크플로우를 위한 프롬프트 오케스트레이션 하네스 (전략→실행→최적화→분석→보고).`
+- EN: `Prompt orchestration harness for M2–M6 marketing AI workflows (strategy → execution → optimization → analysis → reporting).`
+
+### About (상세 문구)
+
+- KR: `캠페인 입력 변수와 로컬 근거 문서를 기반으로, M2~M6 마케팅 에이전트를 단계적으로 지휘하는 프롬프트 운영 레포입니다. 단계 간 handoff JSON 스키마와 렌더링/리포트 스크립트를 포함해 실행 일관성과 데이터 연속성을 보장합니다.`
+- EN: `A prompt operations repository that orchestrates M2–M6 marketing agents from campaign inputs and local evidence files. It includes handoff JSON schemas plus rendering/reporting scripts to ensure execution consistency and cross-stage data continuity.`
+
 ## 목적
 
 - 캠페인/브랜드/카테고리/경쟁사 리서치 변수를 입력받아 마케팅 에이전트 팀을 통합 지휘
@@ -26,6 +38,46 @@
    - `python3 scripts/render_prompt.py --input examples/input-template.json --stage orchestration`
 3. 출력 프롬프트 사용
    - 생성된 `dist/` 파일을 ChatGPT/Claude/Gemini에 붙여 실행
+4. 단계 결과를 Markdown 보고서로 변환(선택)
+   - `python3 scripts/export_markdown_report.py --input examples/runs/galaxy-fold8/M2_output.json`
+   - 기본 출력: `examples/runs/galaxy-fold8/M2_output.md`
+
+## Cursor Agent / Claude Cowork 로컬 문서 연동 프로세스
+
+로컬 파일(`.md`, `.markdown`, `.txt`, `.doc`, `.docx`, `.pdf`)을 근거로 실행할 때는 아래 순서를 권장합니다.
+
+1. **근거 파일 수집 및 자동 인덱싱**
+   - 캠페인 브리프, 제품 스펙 문서, 경쟁사 분석 자료를 로컬 폴더에 모음
+   - 자동 인덱싱 + 게이트 검사 실행:
+     - `python3 scripts/local_intake_gate.py --docs-dir <local_docs_dir>`
+   - 기본 산출:
+     - `dist/local_intake_gate_report.json` (게이트 판정/근거 맵)
+     - `dist/local_intake_input_suggested.json` (입력 변수 후보값)
+2. **필수 입력 변수 매핑**
+   - `dist/local_intake_input_suggested.json`을 검토 후 `examples/input-template.json`의 8개 필수 슬롯 확정
+3. **필수 입력 변수 게이트 확인**
+   - 필수 스칼라: `campaign_name`, `brand_name`, `brand_category`, `product_specs`, `target_region`
+   - 필수 컬렉션: `competitor_set`(1개 이상), `topic_clusters`(1개 이상)
+   - `campaign_data`가 없으면 M5는 시뮬레이션 모드로 실행
+4. **프롬프트 렌더링 및 실행**
+   - `python3 scripts/render_prompt.py --input examples/input-template.json --stage orchestration`
+   - 렌더링 결과를 Cursor Agent 또는 Claude Cowork에 붙여 실행
+5. **출력 검증**
+   - 결과 JSON의 `intake_status.gate_pass`와 `source_documents`를 확인해 근거 연결이 유지되는지 검증
+
+## 게이트-렌더 파이프라인 실행
+
+게이트 통과 시에만 프롬프트 렌더링을 수행하려면 다음 커맨드를 사용합니다.
+
+`python3 scripts/run_with_gate.py --docs-dir <local_docs_dir> --input examples/input-template.json --stage orchestration`
+
+- 기본 동작:
+  - `local_intake_gate.py` 실행
+  - 게이트 실패 시 렌더링 스킵
+  - 게이트 통과 시 `dist/resolved_input.json` 생성 후 `render_prompt.py` 실행
+- 주요 옵션:
+  - `--render-output dist/orchestration_rendered.md`
+  - `--fail-on-gate-fail` (게이트 실패 시 exit code 2 반환)
 
 ## 지원 입력 변수
 

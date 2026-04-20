@@ -1,0 +1,84 @@
+# M2 output report
+
+- **stage**: M2
+- **campaign_context**:
+  - **campaign_name**: 갤럭시 폴드8
+  - **brand_name**: 삼성전자
+  - **brand_category**: 폴더블 스마트폰
+- **assumptions**:
+  - 샤오미는 가격 민감층에서 대체재로 작동한다.
+  - 폴더블 구매의사결정은 체험 기반 전환율 영향이 크다.
+  - 제품 세부 스펙 비교는 공식 검증값 업데이트가 필요하다.
+- **inputs_used**:
+  - **competitor_set**:
+    - 샤오미
+  - **topic_clusters**:
+    - 일상 생산성 강화
+    - 프리미엄 디자인
+    - AI 기반 사용 편의
+  - **target_region**: KR
+- **artifacts**:
+  - **strategy_brief**:
+    - **goal**: 프리오더 리드와 실구매 기여를 동시에 확대
+    - **positioning**: 가격이 아닌 사용가치(생산성/경험) 중심 프리미엄 선택
+    - **core_message**: 접히는 폼팩터가 일상 효율을 바꾸는 실사용 가치를 증명
+  - **kpi_tree**:
+    - **awareness**:
+      - 도달
+      - 영상완주율
+      - 브랜드 검색량
+    - **consideration**:
+      - 랜딩 체류시간
+      - 스펙 비교 클릭률
+      - 체험예약 전환율
+    - **conversion**:
+      - 사전예약 리드
+      - 구매보조 전환
+      - 리드당 비용(CPL)
+  - **media_mix**:
+    - **Naver_Search**: 34%
+    - **Google_Search**: 24%
+    - **Kakao_Bizboard**: 18%
+    - **YouTube**: 24%
+  - **keyword_framework**:
+    - **brand**:
+      - 갤럭시 폴드8
+      - 삼성 폴더블
+      - 폴드8 사전예약
+    - **competitor**:
+      - 샤오미 폴더블
+      - 샤오미 폴드 비교
+    - **intent**:
+      - 폴더블 업무용
+      - 대화면 멀티태스킹 폰
+  - **seo_aeo_geo_actions**:
+    - FAQ를 Answer-first 구조로 재작성
+    - 제품 비교 문단에 검증 가능한 출처 링크 삽입
+    - 리치 스니펫용 구조화 데이터 업데이트
+- **quality_notes**:
+  - 근거 없는 우월표현 사용 없음
+  - 검증 불가 수치는 가정으로 처리
+- **next_stage_ready**: true
+- **handoff_payload**:
+  - **brand_voice**:
+    - **keywords**:
+      - 명확한
+      - 안심
+      - 일관된
+      - 실사용 중심
+    - **forbidden_style**:
+      - 최고
+      - 압도
+      - 혁명
+  - **content_pillars**:
+    - 실사용 생산성
+    - 프리미엄 디자인
+    - AI 사용 편의
+  - **channel_priorities**:
+    - **high_intent_search_first**: true
+    - **video_for_benefit_demonstration**: true
+  - **measurement_plan**:
+    - **north_star**: preorder_leads
+    - **guardrail**:
+      - CPL
+      - 세션당 이탈률
