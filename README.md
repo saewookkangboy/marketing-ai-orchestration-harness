@@ -5,12 +5,7 @@
 
 ## Repository About & Description (KR/EN)
 
-### Git Description (짧은 문구)
-
-- KR: `M2~M6 마케팅 AI 워크플로우를 위한 프롬프트 오케스트레이션 하네스 (전략→실행→최적화→분석→보고).`
-- EN: `Prompt orchestration harness for M2–M6 marketing AI workflows (strategy → execution → optimization → analysis → reporting).`
-
-### About (상세 문구)
+### About
 
 - KR: `캠페인 입력 변수와 로컬 근거 문서를 기반으로, M2~M6 마케팅 에이전트를 단계적으로 지휘하는 프롬프트 운영 레포입니다. 단계 간 handoff JSON 스키마와 렌더링/리포트 스크립트를 포함해 실행 일관성과 데이터 연속성을 보장합니다.`
 - EN: `A prompt operations repository that orchestrates M2–M6 marketing agents from campaign inputs and local evidence files. It includes handoff JSON schemas plus rendering/reporting scripts to ensure execution consistency and cross-stage data continuity.`
