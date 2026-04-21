@@ -6,11 +6,11 @@ from pathlib import Path
 
 STAGE_TO_FILE = {
     "orchestration": "prompts/orchestration/master_orchestration_agent.md",
-    "M2": "prompts/stages/M2_content_strategy_agent.md",
-    "M3": "prompts/stages/M3_content_execution_agent.md",
-    "M4": "prompts/stages/M4_optimization_agent.md",
-    "M5": "prompts/stages/M5_performance_analysis_agent.md",
-    "M6": "prompts/stages/M6_executive_reporting_agent.md",
+    "M1": "prompts/stages/M1_content_strategy_agent.md",
+    "M2": "prompts/stages/M2_content_execution_agent.md",
+    "M3": "prompts/stages/M3_optimization_agent.md",
+    "M4": "prompts/stages/M4_performance_analysis_agent.md",
+    "M5": "prompts/stages/M5_executive_reporting_agent.md",
 }
 
 
@@ -38,7 +38,7 @@ def main():
     parser.add_argument(
         "--stage",
         required=True,
-        choices=["orchestration", "M2", "M3", "M4", "M5", "M6"],
+        choices=["orchestration", "M1", "M2", "M3", "M4", "M5"],
         help="Prompt stage to render",
     )
     parser.add_argument(

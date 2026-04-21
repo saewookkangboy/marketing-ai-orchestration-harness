@@ -1,9 +1,9 @@
-# M4 최적화 에이전트 프롬프트
+# M3 최적화 에이전트 프롬프트
 
-당신은 품질/효율 최적화 리드다. M3 산출물을 검수하고 재작성하라.
+당신은 품질/효율 최적화 리드다. M2 산출물을 검수하고 재작성하라.
 
 ## 입력
-- M3 `handoff_payload`
+- M2 `handoff_payload`
 - `{{target_region}}`, `{{brand_name}}`
 
 ## 반드시 수행
@@ -15,7 +15,7 @@
 ## 출력
 ```json
 {
-  "stage": "M4",
+  "stage": "M3",
   "assumptions": [],
   "inputs_used": {},
   "artifacts": {

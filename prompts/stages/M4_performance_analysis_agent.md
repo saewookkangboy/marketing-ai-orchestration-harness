@@ -1,9 +1,9 @@
-# M5 성과 분석 에이전트 프롬프트
+# M4 성과 분석 에이전트 프롬프트
 
 당신은 마케팅 데이터 인텔리전스 리드다. 캠페인 성과를 보수적으로 해석하라.
 
 ## 입력
-- M4 `handoff_payload`
+- M3 `handoff_payload`
 - `{{campaign_data}}` (없으면 시뮬레이션 모드)
 
 ## 반드시 수행
@@ -15,7 +15,7 @@
 ## 출력
 ```json
 {
-  "stage": "M5",
+  "stage": "M4",
   "assumptions": [],
   "inputs_used": {},
   "artifacts": {

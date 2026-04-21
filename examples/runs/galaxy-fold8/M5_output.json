@@ -1,56 +1,49 @@
 {
   "stage": "M5",
   "assumptions": [
-    "광고 노출 외 요인(계절성/오프라인 프로모션)의 영향이 일부 존재",
-    "어트리뷰션은 라스트클릭 편향이 있을 수 있음"
+    "Q4 시장 경쟁 심화에 따라 효율 변동폭 확대 가능"
   ],
   "inputs_used": {
-    "from_stage": "M4.handoff_payload",
-    "campaign_data_period": "2026-09"
+    "from_stages": ["M1", "M2", "M3", "M4"],
+    "campaign_name": "갤럭시 폴드8"
   },
   "artifacts": {
-    "kpi_dashboard": {
-      "impressions": 9800000,
-      "clicks": 412000,
-      "ctr": 0.042,
-      "landing_sessions": 266000,
-      "preorder_leads": 21400,
-      "lead_conversion_rate": 0.0805,
-      "purchase_assists": 5400
+    "executive_one_pager": {
+      "background": "갤럭시 폴드8 캠페인은 프리미엄 사용가치 중심 전략으로 설계됨",
+      "insight": "고의도 검색 채널이 리드 견인, 랜딩 초기 이탈이 핵심 개선지점",
+      "impact": "전환 퍼널 최적화 시 리드 효율 추가 개선 여지 확인",
+      "uncertainty": "증분효과는 실험설계 보강 전까지 중간 신뢰",
+      "investment_view": "검색 중심의 선택적 예산 확대 + 랜딩 개선 병행이 합리적"
     },
-    "funnel_diagnosis": {
-      "drop_point": "클릭 -> 랜딩 세션 전환",
-      "issue_hypothesis": "모바일 랜딩 첫 화면의 정보밀도 과다",
-      "recommended_fix": "상단 가치요약 + CTA 단순화"
-    },
-    "incrementality_read": {
-      "summary": "검색 고의도 구간의 증분 기여가 상대적으로 큼",
-      "evidence_grade": "중",
-      "note": "실험군/대조군 설계 보강 필요"
-    },
-    "optimization_recommendations": [
-      "네이버 검색 예산 +8%, 카카오 비즈보드 -5% 재배분 테스트",
-      "유튜브 30초 소재의 초반 5초 메시지 단순화",
-      "랜딩페이지 FAQ Answer-first 구조 고정"
+    "decision_asks": [
+      "향후 4주간 검색 채널 예산 +8% 테스트 승인",
+      "랜딩페이지 개편(상단 정보구조 단순화) 우선 배정",
+      "증분 측정용 지역 분할 실험 승인"
+    ],
+    "quarterly_action_plan": [
+      "W1~W2: 크리에이티브 리프레시 + CTA 테스트",
+      "W3~W4: 랜딩 개선 버전 론칭",
+      "W5~W8: 증분 실험 및 예산 재배분 확정"
     ]
   },
   "quality_notes": [
-    "인과 단정 대신 증거등급 표기",
-    "불확실성 항목 명시"
+    "ROI/불확실성 균형 기술",
+    "결정 요청 3개 이내 준수"
   ],
   "next_stage_ready": true,
   "handoff_payload": {
-    "insight_pack": {
-      "primary_driver": "고의도 검색 유입",
-      "main_leakage": "클릭 후 랜딩 초기 이탈"
+    "board_ready_packet": {
+      "title": "갤럭시 폴드8 캠페인 운영 제안",
+      "format": "1-page + appendix"
     },
-    "budget_shift_scenarios": [
-      "Scenario A: Search 중심 확대",
-      "Scenario B: Video 효율 재학습 후 확대"
-    ],
-    "learning_agenda": [
-      "증분 측정 실험(geo split)",
-      "CTA 메시지 유형별 전환 차이 검증"
+    "metrics_dictionary": {
+      "CPL": "리드당 비용",
+      "CVR": "전환율",
+      "Incrementality": "증분 기여"
+    },
+    "followup_tracking": [
+      "주간 KPI 리뷰",
+      "월간 증분 리포트"
     ]
   }
 }

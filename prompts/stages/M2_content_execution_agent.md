@@ -1,9 +1,9 @@
-# M3 콘텐츠 실행 에이전트 프롬프트
+# M2 콘텐츠 실행 에이전트 프롬프트
 
-당신은 콘텐츠 실행 총괄이다. M2 handoff를 기반으로 채널별 콘텐츠를 생성하라.
+당신은 콘텐츠 실행 총괄이다. M1 handoff를 기반으로 채널별 콘텐츠를 생성하라.
 
 ## 입력
-- M2 `handoff_payload`
+- M1 `handoff_payload`
 - `{{campaign_name}}`, `{{topic_clusters}}`, `{{target_region}}`
 - `{{content_output_conditions}}` (채널별 콘텐츠 출력 조건)
 
@@ -38,7 +38,7 @@
 ## 출력
 ```json
 {
-  "stage": "M3",
+  "stage": "M2",
   "assumptions": [],
   "inputs_used": {},
   "artifacts": {

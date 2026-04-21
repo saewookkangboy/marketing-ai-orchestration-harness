@@ -1,70 +1,90 @@
 {
   "stage": "M2",
-  "campaign_context": {
-    "campaign_name": "갤럭시 폴드8",
-    "brand_name": "삼성전자",
-    "brand_category": "폴더블 스마트폰"
-  },
   "assumptions": [
-    "샤오미는 가격 민감층에서 대체재로 작동한다.",
-    "폴더블 구매의사결정은 체험 기반 전환율 영향이 크다.",
-    "제품 세부 스펙 비교는 공식 검증값 업데이트가 필요하다."
+    "M1 브랜드 보이스를 모든 카피 모듈에 공통 적용",
+    "타깃은 신규 구매 + 프리미엄 업그레이드 수요를 포함"
   ],
   "inputs_used": {
-    "competitor_set": ["샤오미"],
-    "topic_clusters": ["일상 생산성 강화", "프리미엄 디자인", "AI 기반 사용 편의"],
+    "from_stage": "M1.handoff_payload",
+    "campaign_name": "갤럭시 폴드8",
     "target_region": "KR"
   },
   "artifacts": {
-    "strategy_brief": {
-      "goal": "프리오더 리드와 실구매 기여를 동시에 확대",
-      "positioning": "가격이 아닌 사용가치(생산성/경험) 중심 프리미엄 선택",
-      "core_message": "접히는 폼팩터가 일상 효율을 바꾸는 실사용 가치를 증명"
-    },
-    "kpi_tree": {
-      "awareness": ["도달", "영상완주율", "브랜드 검색량"],
-      "consideration": ["랜딩 체류시간", "스펙 비교 클릭률", "체험예약 전환율"],
-      "conversion": ["사전예약 리드", "구매보조 전환", "리드당 비용(CPL)"]
-    },
-    "media_mix": {
-      "Naver_Search": "34%",
-      "Google_Search": "24%",
-      "Kakao_Bizboard": "18%",
-      "YouTube": "24%"
-    },
-    "keyword_framework": {
-      "brand": ["갤럭시 폴드8", "삼성 폴더블", "폴드8 사전예약"],
-      "competitor": ["샤오미 폴더블", "샤오미 폴드 비교"],
-      "intent": ["폴더블 업무용", "대화면 멀티태스킹 폰"]
-    },
-    "seo_aeo_geo_actions": [
-      "FAQ를 Answer-first 구조로 재작성",
-      "제품 비교 문단에 검증 가능한 출처 링크 삽입",
-      "리치 스니펫용 구조화 데이터 업데이트"
-    ]
+    "copy_modules": [
+      {
+        "id": "NAVER_A1",
+        "channel": "Naver Search",
+        "headline": "갤럭시 폴드8, 일상을 더 명확하게",
+        "sub": "접으면 휴대, 펼치면 생산성",
+        "cta": "사전예약 혜택 확인"
+      },
+      {
+        "id": "YT_V1",
+        "channel": "YouTube",
+        "headline": "멀티태스킹이 쉬워지는 순간",
+        "sub": "대화면으로 업무와 일상을 자연스럽게 연결",
+        "cta": "실사용 영상 보기"
+      }
+    ],
+    "image_prompts": [
+      "프리미엄 모바일 라이프스타일, 폴더블 기기 펼침 상태, 자연광, 미니멀 배경, 브랜드 컬러 포인트, 과장된 효과 금지",
+      "오피스 환경에서 멀티태스킹 장면, 화면 분할 UI 강조, 명확한 텍스트 공간 확보"
+    ],
+    "message_prompts": [
+      "브랜드 톤: 명확/안심/일관. 갤럭시 폴드8의 실사용 가치를 90자 이내로 설명하는 광고 문구 10개 생성",
+      "샤오미와 직접 비교하지 않고, 사용맥락 기반 차별가치를 CTA 포함 5개 생성"
+    ],
+    "conditions_applied": [
+      {
+        "channel": "blog",
+        "applied_rules": [
+          "AEO/GEO 최적화 문서 구조 적용",
+          "핵심 답변 우선 + FAQ 섹션 분리"
+        ],
+        "status": "applied"
+      },
+      {
+        "channel": "instagram",
+        "applied_rules": [
+          "single_image 또는 carousel 포맷 중 1개 선택",
+          "Gemini Nano Banana Pro2 기반 이미지 생성 프롬프트 포함",
+          "캡션 메시지 + CTA 포함"
+        ],
+        "status": "applied"
+      },
+      {
+        "channel": "linkedin",
+        "applied_rules": [
+          "링크드인 뉴스피드 최적화 구성",
+          "초반 훅 + 짧은 문단/불릿 + CTA 포함"
+        ],
+        "status": "applied"
+      }
+    ],
+    "video_production_proposal": {
+      "format": ["15s", "30s", "60s"],
+      "concept": "접고 펼치는 순간마다 달라지는 하루의 효율",
+      "service_model": "하이브리드(핵심 크리에이티브 외주 + 퍼포먼스 컷 인하우스)"
+    }
   },
   "quality_notes": [
-    "근거 없는 우월표현 사용 없음",
-    "검증 불가 수치는 가정으로 처리"
+    "금지어 미사용",
+    "브랜드 보이스 키워드 유지"
   ],
   "next_stage_ready": true,
   "handoff_payload": {
-    "brand_voice": {
-      "keywords": ["명확한", "안심", "일관된", "실사용 중심"],
-      "forbidden_style": ["최고", "압도", "혁명"]
+    "creative_library": {
+      "search_assets": 12,
+      "social_assets": 18,
+      "video_assets": 6
     },
-    "content_pillars": [
-      "실사용 생산성",
-      "프리미엄 디자인",
-      "AI 사용 편의"
-    ],
-    "channel_priorities": {
-      "high_intent_search_first": true,
-      "video_for_benefit_demonstration": true
+    "channel_assets_map": {
+      "Naver Search": ["NAVER_A1"],
+      "YouTube": ["YT_V1"]
     },
-    "measurement_plan": {
-      "north_star": "preorder_leads",
-      "guardrail": ["CPL", "세션당 이탈률"]
-    }
+    "test_candidates": [
+      "헤드라인 가치 표현형 vs 기능 표현형",
+      "CTA 혜택형 vs 체험형"
+    ]
   }
 }

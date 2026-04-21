@@ -1,52 +1,56 @@
 {
   "stage": "M4",
   "assumptions": [
-    "초기 2주간 크리에이티브 학습 기간을 별도로 둔다."
+    "광고 노출 외 요인(계절성/오프라인 프로모션)의 영향이 일부 존재",
+    "어트리뷰션은 라스트클릭 편향이 있을 수 있음"
   ],
   "inputs_used": {
     "from_stage": "M3.handoff_payload",
-    "target_region": "KR"
+    "campaign_data_period": "2026-09"
   },
   "artifacts": {
-    "optimized_assets": {
-      "tone_unification": "모든 소재의 첫 문장을 가치 제안형으로 통일",
-      "compliance_fix": "비교 우월 암시 문구 삭제",
-      "geo_refactor": "FAQ/광고 본문을 Answer-first 구조로 재작성"
+    "kpi_dashboard": {
+      "impressions": 9800000,
+      "clicks": 412000,
+      "ctr": 0.042,
+      "landing_sessions": 266000,
+      "preorder_leads": 21400,
+      "lead_conversion_rate": 0.0805,
+      "purchase_assists": 5400
     },
-    "ab_test_plan": [
-      {
-        "test_id": "AB-H1",
-        "hypothesis": "실사용 시나리오 헤드라인이 기능형 대비 CTR 개선",
-        "success_metric": "CTR +10%",
-        "stop_rule": "7일/95% 신뢰 미달 시 종료"
-      },
-      {
-        "test_id": "AB-CTA2",
-        "hypothesis": "체험 유도 CTA가 혜택형 대비 랜딩 전환 개선",
-        "success_metric": "LP CVR +8%",
-        "stop_rule": "샘플 20,000 도달 시 판정"
-      }
-    ],
-    "geo_ready_modules": [
-      "질문: 왜 폴드8인가? 답: 일상 멀티태스킹 효율을 높이는 폴더블 사용경험",
-      "질문: 무엇이 달라지나? 답: 펼침 화면 기반의 작업 연속성과 가독성 향상"
+    "funnel_diagnosis": {
+      "drop_point": "클릭 -> 랜딩 세션 전환",
+      "issue_hypothesis": "모바일 랜딩 첫 화면의 정보밀도 과다",
+      "recommended_fix": "상단 가치요약 + CTA 단순화"
+    },
+    "incrementality_read": {
+      "summary": "검색 고의도 구간의 증분 기여가 상대적으로 큼",
+      "evidence_grade": "중",
+      "note": "실험군/대조군 설계 보강 필요"
+    },
+    "optimization_recommendations": [
+      "네이버 검색 예산 +8%, 카카오 비즈보드 -5% 재배분 테스트",
+      "유튜브 30초 소재의 초반 5초 메시지 단순화",
+      "랜딩페이지 FAQ Answer-first 구조 고정"
     ]
   },
   "quality_notes": [
-    "M2 voice 키워드 충돌 없음",
-    "문화/규제 민감 표현 이상 없음"
+    "인과 단정 대신 증거등급 표기",
+    "불확실성 항목 명시"
   ],
   "next_stage_ready": true,
   "handoff_payload": {
-    "approved_asset_pack": {
-      "search": 8,
-      "social": 10,
-      "video": 4
+    "insight_pack": {
+      "primary_driver": "고의도 검색 유입",
+      "main_leakage": "클릭 후 랜딩 초기 이탈"
     },
-    "experiment_backlog": [
-      "가격 메시지 노출 수준 조정",
-      "비교형 랜딩 정보 구조 개선"
+    "budget_shift_scenarios": [
+      "Scenario A: Search 중심 확대",
+      "Scenario B: Video 효율 재학습 후 확대"
     ],
-    "compliance_flags": []
+    "learning_agenda": [
+      "증분 측정 실험(geo split)",
+      "CTA 메시지 유형별 전환 차이 검증"
+    ]
   }
 }

@@ -16,14 +16,14 @@
 - 아래 항목이 모두 충족되지 않으면 실행하지 않고 누락 항목만 보완
   - 스칼라 필수: `campaign_name`, `brand_name`, `brand_category`, `product_specs`, `target_region`
   - 배열 필수: `competitor_set` 1개 이상, `topic_clusters` 1개 이상
-  - `campaign_data` 미입력 시 M5는 `simulation_mode`로 실행
+  - `campaign_data` 미입력 시 M4는 `simulation_mode`로 실행
 
 ## 2) 프롬프트 렌더링
 
 - 오케스트레이션:  
   `python3 scripts/render_prompt.py --input examples/input-template.json --stage orchestration`
-- 단계별(M2~M6):  
-  `python3 scripts/render_prompt.py --input examples/input-template.json --stage M2`
+- 단계별(M1~M5):  
+  `python3 scripts/render_prompt.py --input examples/input-template.json --stage M1`
 - 게이트 연동 파이프라인(권장):  
   `python3 scripts/run_with_gate.py --docs-dir <local_docs_dir> --input examples/input-template.json --stage orchestration`
 
@@ -43,11 +43,11 @@
 ## 5) JSON -> Markdown 보고서 변환(선택)
 
 - 단계 결과 JSON을 사람이 읽기 쉬운 보고서로 변환:  
-  `python3 scripts/export_markdown_report.py --input examples/runs/galaxy-fold8/M2_output.json`
+  `python3 scripts/export_markdown_report.py --input examples/runs/galaxy-fold8/M1_output.json`
 - 출력 경로를 지정하려면:  
-  `python3 scripts/export_markdown_report.py --input examples/runs/galaxy-fold8/M2_output.json --output dist/M2_report.md`
+  `python3 scripts/export_markdown_report.py --input examples/runs/galaxy-fold8/M1_output.json --output dist/M1_report.md`
 
 ## 6) 운영 리듬
 
-- 주간: M3/M4 크리에이티브 갱신
-- 월간: M5/M6 보고 체계 업데이트
+- 주간: M2/M3 크리에이티브 갱신
+- 월간: M4/M5 보고 체계 업데이트

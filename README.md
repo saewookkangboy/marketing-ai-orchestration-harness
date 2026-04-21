@@ -1,25 +1,25 @@
 # Marketing AI Orchestration Harness
 
-전략(M2) -> 실행(M3) -> 최적화(M4) -> 분석(M5) -> 보고(M6) 파이프라인을 단절 없이 운영하기 위한 프롬프트 레포입니다.
+전략(M1) -> 실행(M2) -> 최적화(M3) -> 분석(M4) -> 보고(M5) 파이프라인을 단절 없이 운영하기 위한 프롬프트 레포입니다.
 <img width="2752" height="1536" alt="git_blueprint" src="https://github.com/user-attachments/assets/051ebf64-8880-49fa-bbcc-5eb7b216caa3" />
 
 ## Repository About & Description (KR/EN)
 
 ### About
 
-- KR: `캠페인 입력 변수와 로컬 근거 문서를 기반으로, M2~M6 마케팅 에이전트를 단계적으로 지휘하는 프롬프트 운영 레포입니다. 단계 간 handoff JSON 스키마와 렌더링/리포트 스크립트를 포함해 실행 일관성과 데이터 연속성을 보장합니다.`
-- EN: `A prompt operations repository that orchestrates M2–M6 marketing agents from campaign inputs and local evidence files. It includes handoff JSON schemas plus rendering/reporting scripts to ensure execution consistency and cross-stage data continuity.`
+- KR: `캠페인 입력 변수와 로컬 근거 문서를 기반으로, M1~M5 마케팅 에이전트를 단계적으로 지휘하는 프롬프트 운영 레포입니다. 단계 간 handoff JSON 스키마와 렌더링/리포트 스크립트를 포함해 실행 일관성과 데이터 연속성을 보장합니다.`
+- EN: `A prompt operations repository that orchestrates M1–M5 marketing agents from campaign inputs and local evidence files. It includes handoff JSON schemas plus rendering/reporting scripts to ensure execution consistency and cross-stage data continuity.`
 
 ## 목적
 
 - 캠페인/브랜드/카테고리/경쟁사 리서치 변수를 입력받아 마케팅 에이전트 팀을 통합 지휘
-- 콘텐츠 전략, 콘텐츠 생성, 성과 분석, 보고를 단일 하네스로 연결
+- 전략(M1), 실행(M2), 최적화(M3), 분석(M4), 보고(M5)를 단일 하네스로 연결
 - ChatGPT, Claude, Gemini에서 공통 활용 가능한 프롬프트 체계 제공
 
 ## 폴더 구조
 
 - `prompts/orchestration`: 오케스트레이션 마스터 프롬프트
-- `prompts/stages`: M2~M6 단계별 전문 에이전트 프롬프트
+- `prompts/stages`: M1~M5 단계별 전문 에이전트 프롬프트
 - `prompts/specialized`: 이미지/메시지/영상 제안 등 확장 모듈
 - `prompts/providers`: 모델별 적용 가이드(ChatGPT/Claude/Gemini)
 - `prompts/providers/orchestration_prompt_input_guide.md`: 입력 변수만 채워 실행하는 원프롬프트 가이드
@@ -37,9 +37,9 @@
    - 생성된 `dist/` 파일을 ChatGPT/Claude/Gemini에 붙여 실행
    - 또는 `prompts/providers/orchestration_prompt_input_guide.md`의 공통 원프롬프트에 입력 변수 JSON만 채워 즉시 실행
 4. 단계 결과를 Markdown 보고서로 변환(선택)
-   - `python3 scripts/export_markdown_report.py --input examples/runs/galaxy-fold8/M2_output.json`
-   - 기본 출력: `examples/runs/galaxy-fold8/M2_output.md`
-   - M3 콘텐츠 출력 조건 적용 예시: `examples/runs/galaxy-fold8/M3_output.json`의 `artifacts.conditions_applied`
+   - `python3 scripts/export_markdown_report.py --input examples/runs/galaxy-fold8/M1_output.json`
+   - 기본 출력: `examples/runs/galaxy-fold8/M1_output.md`
+   - M2 콘텐츠 출력 조건 적용 예시: `examples/runs/galaxy-fold8/M2_output.json`의 `artifacts.conditions_applied`
 
 ## Cursor Agent / Claude Cowork 로컬 문서 연동 프로세스
 
@@ -54,11 +54,11 @@
      - `dist/local_intake_input_suggested.json` (입력 변수 후보값)
 2. **필수 입력 변수 매핑**
    - `dist/local_intake_input_suggested.json`을 검토 후 `examples/input-template.json`의 8개 필수 슬롯 확정
-   - `content_output_conditions`가 있으면 M3 콘텐츠 생성 제약으로 함께 반영
+   - `content_output_conditions`가 있으면 M2 콘텐츠 생성 제약으로 함께 반영
 3. **필수 입력 변수 게이트 확인**
    - 필수 스칼라: `campaign_name`, `brand_name`, `brand_category`, `product_specs`, `target_region`
    - 필수 컬렉션: `competitor_set`(1개 이상), `topic_clusters`(1개 이상)
-   - `campaign_data`가 없으면 M5는 시뮬레이션 모드로 실행
+   - `campaign_data`가 없으면 M4는 시뮬레이션 모드로 실행
 4. **프롬프트 렌더링 및 실행**
    - `python3 scripts/render_prompt.py --input examples/input-template.json --stage orchestration`
    - 렌더링 결과를 Cursor Agent 또는 Claude Cowork에 붙여 실행
@@ -88,13 +88,13 @@
 - `product_specs`: 제품/서비스 기술 및 증빙 정보
 - `topic_clusters`: 콘텐츠 주제 클러스터
 - `target_region`: 국가/언어/규제 민감도
-- `campaign_data`: 성과 데이터(없으면 M5 시뮬레이션 모드)
+- `campaign_data`: 성과 데이터(없으면 M4 시뮬레이션 모드)
 - `content_output_conditions`: 콘텐츠 출력 조건(채널별 포맷, 최적화 지침, CTA/이미지 생성 제약)
 
 ## 권장 운영 방식
 
-- 주간: M2/M3 재정렬 + M4 품질 게이트
-- 월간: M5 증분 해석 + M6 경영진 1페이지 보고
+- 주간: M1/M2 재정렬 + M3 품질 게이트
+- 월간: M4 증분 해석 + M5 경영진 1페이지 보고
 - 분기: 경쟁사 리서치 갱신 + 메시지/크리에이티브 라이브러리 리빌드
 
 ## 전체 프롬프트 구조 도식화
@@ -130,7 +130,7 @@ Marketing AI Orchestration Prompt System
 │  └─ 목적별 Skill 모듈(디버깅/배포/PR/문서화 등)
 └─ 5) 작업 계층 (Task Intent)
    ├─ 사용자 목표 해석
-   ├─ 단계별 실행(M2 → M6)
+   ├─ 단계별 실행(M1 → M5)
    └─ 결과 산출물(dist 프롬프트, JSON 출력, 보고물)
 ```
 
@@ -150,18 +150,18 @@ flowchart TB
 - `실행 계층`은 실제 작업을 수행하는 도구 집합입니다.
 - `안전/품질 계층`은 실행 중 실수와 리스크를 줄이는 방어선입니다.
 - `확장 계층`은 외부 시스템 연동(MCP)과 재사용 가능한 작업 템플릿(Skill)을 담당합니다.
-- `작업 계층`은 M2~M6 목표 달성을 위한 실제 사용자 요청과 산출물에 해당합니다.
+- `작업 계층`은 M1~M5 목표 달성을 위한 실제 사용자 요청과 산출물에 해당합니다.
 
 ### `prompts/` 파일별 계층 매핑
 
 | 파일 경로 | 분류 | 매핑 계층 | 역할 요약 |
 | --- | --- | --- | --- |
-| `prompts/orchestration/master_orchestration_agent.md` | Orchestration | 5) 작업 계층 (Task Intent) | M2~M6 전체 파이프라인을 지휘하고 단계 간 입력/출력을 연결하는 최상위 실행 프롬프트 |
-| `prompts/stages/M2_content_strategy_agent.md` | Stage (M2) | 5) 작업 계층 (Task Intent) | 리서치 변수 기반 콘텐츠 전략/프레임 설계 |
-| `prompts/stages/M3_content_execution_agent.md` | Stage (M3) | 5) 작업 계층 (Task Intent) | 전략을 실제 콘텐츠 제작 지시/산출로 변환 |
-| `prompts/stages/M4_optimization_agent.md` | Stage (M4) | 5) 작업 계층 (Task Intent) | 품질 게이트, 개선 루프, 실험/최적화 지시 |
-| `prompts/stages/M5_performance_analysis_agent.md` | Stage (M5) | 5) 작업 계층 (Task Intent) | 성과 데이터 분석 및 인사이트 도출 |
-| `prompts/stages/M6_executive_reporting_agent.md` | Stage (M6) | 5) 작업 계층 (Task Intent) | 의사결정자 관점의 보고/요약 산출 |
+| `prompts/orchestration/master_orchestration_agent.md` | Orchestration | 5) 작업 계층 (Task Intent) | M1~M5 전체 파이프라인을 지휘하고 단계 간 입력/출력을 연결하는 최상위 실행 프롬프트 |
+| `prompts/stages/M1_content_strategy_agent.md` | Stage (M1) | 5) 작업 계층 (Task Intent) | 리서치 변수 기반 콘텐츠 전략/프레임 설계 |
+| `prompts/stages/M2_content_execution_agent.md` | Stage (M2) | 5) 작업 계층 (Task Intent) | 전략을 실제 콘텐츠 제작 지시/산출로 변환 |
+| `prompts/stages/M3_optimization_agent.md` | Stage (M3) | 5) 작업 계층 (Task Intent) | 품질 게이트, 개선 루프, 실험/최적화 지시 |
+| `prompts/stages/M4_performance_analysis_agent.md` | Stage (M4) | 5) 작업 계층 (Task Intent) | 성과 데이터 분석 및 인사이트 도출 |
+| `prompts/stages/M5_executive_reporting_agent.md` | Stage (M5) | 5) 작업 계층 (Task Intent) | 의사결정자 관점의 보고/요약 산출 |
 | `prompts/specialized/content_message_prompt.md` | Specialized Module | 4) 확장 계층 (MCP & Skills) | 메시지/카피라이팅 등 특정 목적 작업을 보강하는 확장 모듈 |
 | `prompts/specialized/image_generation_prompt.md` | Specialized Module | 4) 확장 계층 (MCP & Skills) | 이미지 생성 업무를 위한 목적형 확장 프롬프트 |
 | `prompts/specialized/video_service_proposal_prompt.md` | Specialized Module | 4) 확장 계층 (MCP & Skills) | 영상/서비스 제안서 성격의 특화 산출물 생성 모듈 |

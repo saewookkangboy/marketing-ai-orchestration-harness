@@ -77,7 +77,7 @@ def main() -> None:
     parser.add_argument(
         "--stage",
         default="orchestration",
-        choices=["orchestration", "M2", "M3", "M4", "M5", "M6"],
+        choices=["orchestration", "M1", "M2", "M3", "M4", "M5"],
         help="Prompt stage to render",
     )
     parser.add_argument(
