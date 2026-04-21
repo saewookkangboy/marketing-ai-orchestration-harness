@@ -36,6 +36,8 @@
 3. 조건 충족이 불가능하면 `quality_notes`에 사유와 보완안을 기록한다.
 
 ## 출력
+단일 JSON 객체 전체를 Markdown `json` fenced code block 한 블록 안에만 출력한다(블록 밖 자연어는 요약·안내만).
+
 ```json
 {
   "stage": "M2",

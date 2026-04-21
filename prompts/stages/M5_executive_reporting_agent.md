@@ -13,6 +13,8 @@
 4. 불확실성과 검증계획 병기
 
 ## 출력
+단일 JSON 객체 전체를 Markdown `json` fenced code block 한 블록 안에만 출력한다(블록 밖 자연어는 요약·안내만).
+
 ```json
 {
   "stage": "M5",

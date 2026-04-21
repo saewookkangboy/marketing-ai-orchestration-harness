@@ -8,8 +8,8 @@
 ## 권장 설정
 - Temperature: 0.2~0.5
 - Max tokens: 충분히 크게 설정(단계별 4k 이상 권장)
-- 스타일: concise + structured JSON
+- 스타일: concise + **json 코드 펜스로 감싼 단일 JSON**(채팅 UI 복사 우선)
 
 ## 주의
-- Claude는 긴 컨텍스트에서 설명이 길어질 수 있으므로 `JSON first` 지시를 유지
+- 긴 설명 대신 **구조화 데이터는 항상 json fenced code block 안**에만 두고, 블록 밖 설명은 최소화한다.
 - 근거 없는 비교표현 금지 규칙을 매 호출에 재명시
