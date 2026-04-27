@@ -24,6 +24,11 @@
 - `prompts/specialized`: 이미지/메시지/영상 제안 등 확장 모듈
 - `prompts/providers`: 모델별 적용 가이드(ChatGPT/Claude/Gemini)
 - `prompts/providers/orchestration_prompt_input_guide.md`: 입력 변수만 채워 실행하는 원프롬프트 가이드
+- `skills/automation-skill-generator/SKILL.md`: Claude Cowork + OpenAI Codex 공용 자동화 스킬 생성 템플릿
+- `skills/pr-review-automation/SKILL.md`: PR 리뷰 코멘트 수집/반영/답글 초안 자동화
+- `skills/ci-fix-automation/SKILL.md`: CI 실패 원인 분석 및 수정 루프 자동화
+- `skills/release-automation/SKILL.md`: 릴리즈 준비·배포·검증 자동화
+- `skills/report-automation/SKILL.md`: 실행 로그 기반 운영 보고서 자동화
 - `schemas`: 단계 간 핸드오프 JSON 스키마(M1~M5 및 선택적 SYNTH)
 - `examples`: 입력 템플릿, **실행 런북**(`examples/runbook.md`), **샘플 런**(`examples/runs/galaxy-fold8/` — `input.json`, 단계별 `M*_output.json` / `.md`, `SYNTH_report.md`)
 - `scripts`: 로컬 인덱싱·게이트, 변수 주입 렌더링, 게이트 연동 일괄 실행, JSON→Markdown 변환
