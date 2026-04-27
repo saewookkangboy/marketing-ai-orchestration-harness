@@ -1,40 +1,36 @@
-# Orchestration Prompt Input Guide (ChatGPT / Gemini / Claude)
+# Orchestration Context Prompt Guide (ChatGPT / Gemini / Claude)
 
-이 문서는 **하나의 Orchestration Agent 프롬프트**에 `입력 변수`만 채워서 ChatGPT, Gemini, Claude에서 바로 실행할 수 있도록 만든 빠른 사용 가이드입니다.
+이 문서는 `prompts/providers/` 공통 기준으로, 실제 모델 입력창에서 바로 쓰기 쉬운 **일반 컨텍스트 중심 프롬프트**를 제공합니다.
 
-## 1) 입력 변수 플레이스홀더 방식 (권장)
-
-아래 `{{변수}}`만 실제 값으로 교체해서 사용하세요.  
-JSON 없이 자연어 구조로 입력할 수 있습니다.
+## 1) 입력 컨텍스트 카드 (값만 교체)
 
 ```text
-캠페인명: {{campaign_name}}
-브랜드명: {{brand_name}}
-브랜드 카테고리: {{brand_category}}
-경쟁사 세트: {{competitor_set}}
-제품/서비스 스펙: {{product_specs}}
-토픽 클러스터: {{topic_clusters}}
-타겟 지역/언어: {{target_region}}
-캠페인 데이터: {{campaign_data}}
-콘텐츠 출력 조건: {{content_output_conditions}}
+[일반 컨텍스트]
+- 캠페인명: {{campaign_name}}
+- 브랜드명: {{brand_name}}
+- 브랜드 카테고리: {{brand_category}}
+- 경쟁사 세트: {{competitor_set}}
+- 제품/서비스 스펙: {{product_specs}}
+- 토픽 클러스터: {{topic_clusters}}
+- 타겟 지역/언어: {{target_region}}
+- 캠페인 데이터: {{campaign_data}}
+- 콘텐츠 출력 조건: {{content_output_conditions}}
 ```
 
-## 2) 공통 원프롬프트 (모든 모델 공용)
-
-아래 프롬프트를 통째로 복사해서 각 모델 입력창에 붙여 넣고 실행하세요.
+## 2) 공용 실행 프롬프트 (복붙용)
 
 ```text
 당신은 Marketing AI Orchestration Agent다.
-역할: 전략(M1) -> 실행(M2) -> 최적화(M3) -> 분석(M4) -> 보고(M5)를 데이터 단절 없이 연결 실행한다.
+역할은 전략(M1) -> 실행(M2) -> 최적화(M3) -> 분석(M4) -> 보고(M5) 흐름을 데이터 단절 없이 수행하는 것이다.
 
 [필수 규칙]
 1) 근거 없는 성능 우위/비교/순위 단정 금지
-2) 검증 불가 수치 및 허위 인과 추론 금지
+2) 검증 불가 수치, 허위 인과 추론 금지
 3) 민감정보/개인정보/기밀 노출 금지
-4) 입력이 부족하면 보완 질문은 최대 3개
-5) 전체 구조화 데이터(핸드오프·스키마 필드 포함)는 **Markdown `json` 코드 펜스 한 블록**(` ```json `로 시작해 ` ``` `로 끝남) 안에 **파싱 가능한 단일 JSON 객체**로만 둔다. 코드 블록 밖에는 한 줄 요약(선택)과 짧은 보조 설명(5줄 이내, 선택)만 허용하며, JSON 본문을 목록·표·평문으로 쪼개거나 중복 출력하지 않는다.
+4) 입력 부족 시 질문은 최대 3개
+5) 구조화 결과는 반드시 Markdown `json` 코드 블록 하나로 출력
 
-[입력 변수]
+[입력 컨텍스트]
 - 캠페인명: {{campaign_name}}
 - 브랜드명: {{brand_name}}
 - 브랜드 카테고리: {{brand_category}}
@@ -46,16 +42,17 @@ JSON 없이 자연어 구조로 입력할 수 있습니다.
 - 콘텐츠 출력 조건: {{content_output_conditions}}
 
 [실행 절차]
-- INPUT 게이트 검사 후 통과하면 M1 -> M2 -> M3 -> M4 -> M5 순으로 실행
-- campaign_data가 비어 있으면 M4를 simulation_mode로 실행
-- 각 단계 결과에 handoff_payload를 포함해 다음 단계로 전달
+- 입력 게이트 검사
+- 통과 시 M1 -> M2 -> M3 -> M4 -> M5 순차 실행
+- campaign_data가 비어 있으면 M4는 simulation_mode로 처리
+- 단계별 handoff_payload를 다음 단계로 전달
 
-[출력 형식: 코드 복사용 Markdown]
-- 위 스키마를 채운 **완성 JSON 전체**를, 응답에서 **반드시** 아래 예시와 같이 `json` 언어 태그가 붙은 **단일 코드 블록**으로만 제시한다(채팅 UI의 복사 버튼으로 한 번에 가져갈 수 있게).
-- 코드 블록 **내부**에는 JSON 외 텍스트·주석·추가 펜스·트레일링 콤마를 넣지 않는다. 여러 단계를 한 메시지에 쓸 경우 **단계마다 `json` 코드 블록을 각각 1개**씩 순서대로 둔다.
-- 네 응답에서 실제 출력할 때는 아래 중괄호 스키마 전체를, 반드시 Markdown의 json 언어 태그가 붙은 fenced code block(백틱 U+0060 세 개 + 문자열 json + 줄바꿈으로 시작)으로 감싼 단일 블록으로만 낸다.
+[출력 형식]
+- 구조화 데이터는 단일 `json` 코드 블록으로만 출력
+- 코드 블록 내부에는 JSON 외 텍스트/주석 금지
+- 코드 블록 외 설명은 요약 5줄 이내
 
-스키마(값은 실행 시 채움; 응답 시에는 이 트리를 json 코드 펜스 안에 넣을 것):
+[JSON 스키마]
 {
   "stage": "M1|M2|M3|M4|M5|SYNTH",
   "intake_status": {
@@ -76,25 +73,18 @@ JSON 없이 자연어 구조로 입력할 수 있습니다.
   "handoff_payload": {}
 }
 
-지금 입력 변수 기준으로 M1부터 실행을 시작하라.
+지금 입력 컨텍스트 기준으로 M1부터 실행하라.
 ```
 
-## 3) 모델별 붙여넣기 위치
+## 3) 모델별 입력 위치
 
-- ChatGPT
-  - 추천: 위 공통 원프롬프트를 한 번에 사용자 입력으로 실행
-  - 대안: 프로젝트/커스텀 GPT 사용 시 System에 공통 원프롬프트, User에 `{{변수}}` 값만 채운 입력 변수 블록 전달
-- Gemini
-  - Gemini Advanced/Studio 모두 공통 원프롬프트를 입력창에 그대로 사용 가능
-  - Structured output 옵션이 있으면 활성화 권장
-- Claude
-  - 공통 원프롬프트를 첫 호출에 전달
-  - 후속 호출에서 단계 재실행이 필요하면 이전 `handoff_payload`를 함께 첨부
+- ChatGPT: 위 공용 프롬프트를 그대로 입력창에 붙여 실행
+- Gemini: 위 공용 프롬프트 그대로 사용, structured output 옵션 있으면 활성화
+- Claude: 첫 호출에 공용 프롬프트 사용, 재실행 시 이전 `handoff_payload` 추가
 
-## 4) 실패 없이 쓰는 체크리스트
+## 4) 빠른 체크리스트
 
-- `competitor_set`, `topic_clusters`는 쉼표 구분으로 최소 1개 이상 입력 (예: `LG B2B, Siemens`)
+- `competitor_set`, `topic_clusters`는 최소 1개 이상
 - `campaign_data`가 없으면 `없음`으로 명시
-- `content_output_conditions`가 없으면 M2에서 기본 채널 조건(블로그 AEO/GEO, 인스타 이미지+메시지+CTA, 링크드인 뉴스피드 최적화)을 자동 적용
-- 지역/언어가 중요하면 `target_region`에 국가 + 언어를 함께 기입 (예: `KR-ko`)
-- 결과가 장황하면 프롬프트 마지막에 `설명은 5줄 이내`를 추가
+- 지역/언어 중요 시 `target_region`에 `국가-언어` 형식 사용 (예: `KR-ko`)
+- 출력이 길면 마지막 줄에 `설명은 5줄 이내` 추가
